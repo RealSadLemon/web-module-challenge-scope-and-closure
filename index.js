@@ -30,11 +30,12 @@ console.log('example task:', processFirstItem(['foo','bar'],function(str){return
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+      counter1 is set up through a reference to a counterMaker function, all of it's processes including the declaration of a variable are included within function scope but not global scope.
   2. Which of the two uses a closure? How can you tell?
-  
+      They both use a closure, you can tell because they're using declared variables that are outside of the function itself, the first one has a variable inside the function that's used inside a nested function, while the second just uses a globally defined variable inside it's function.
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+      counter1 is preferrable when you need a counter for a single task, while counter2 is better for counting the sum of multiple tasks you need completed.
 */
 
 // counter1 code
@@ -64,9 +65,10 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.floor(Math.random() * 3);
 }
+console.log(inning());
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -83,8 +85,16 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
+function finalScore(inning, numOf){
+  let scoreObj = {
+    "Home": 0,
+    "Away": 0
+  };
+  for(let i = 0; i < numOf; i++){
+    scoreObj.Home += inning();
+    scoreObj.Away += inning();
+  }
+  return scoreObj;
 }
 
 
@@ -101,9 +111,14 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
-
+function getInningScore(inning) {
+  let scoreObj = {
+    "Home": 0,
+    "Away": 0
+  };
+  scoreObj.Home += inning();
+  scoreObj.Away += inning();
+  return scoreObj;
 }
 
 
@@ -147,11 +162,9 @@ Use the scoreboard function below to do the following:
   "This game will require extra innings: Away 10 - Home 10"
 ] */
 // NOTE: There is no test associated with this code; if your output matches the given example, consider it complete!
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard() {
+  
 }
-
-
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
